@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Directory</title>
+    <style>
+        table {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        table td, table th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        table tr:nth-child(even){background-color: #f2f2f2;}
+        
+        table tr:hover {background-color: #ddd;}
+        
+        table th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #9d94ff
+;
+          color: white;
+        }
+        </style>
+</head>
+<body>
+    <h1>People Directory</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>USERNAME</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for people in personas  %}
+                <tr>
+                    <td>{{ people.id }}</td>
+                    <td>{{ people.name }}</td>
+                    <td>{{ people.username }}</td>
+                    <td>{{ people.email }}</td>
+                    <td>{{ people.phone }}</td>
+                </tr>
+            {% endfor %}
+                
+        </tbody>
+    </table>
+</body>
+</html>

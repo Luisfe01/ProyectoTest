@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+    
+    <style>
+        body{font-family: sans-serif;}
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {background-color: coral;}
+    </style>
+</head>
+<body>
+    <h2>Lista de Empleados</h2>
+    <a href="{% url 'empleados_app:crear-empleado2' %}">Nuevo Empleado</a>
+    <br><br>
+    <form action="" method="get">
+        <input type="text" name="buscar" id="buscar">
+    </form>
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Nombre</th><th>Cargo</th><th>Operaciones</th></tr>
+        </thead>
+        <tbody>
+            {% for e in lista_empleados  %}
+                <tr>
+                    <td>{{ e.id }}</td><td>{{ e.nombre }}</td><td>{{ e.cargo.cargo }}</td>
+                    <td>
+                        <a href="{% url 'empleados_app:modificar-empleados' e.id %}">Modificar</a> | 
+                        <a href="{% url 'empleados_app:eliminar-empleados' e.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    {% if is_paginated %}
+        {% if page_obj.has_previous  %}
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %} 
+        {% for i in paginator.page_range  %}
+        {% if page_obj.number == i %}
+            <span>{{ i }}</span>
+        {% else %}
+            <a href="?page={{ i }}">{{ i }}</a>
+        {% endif %}   
+        {% endfor %}
+        {% if page_obj.has_next  %}
+            <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+        {% endif %} 
+    {% endif %}
+</body>
+</html>

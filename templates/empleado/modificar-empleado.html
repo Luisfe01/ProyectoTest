@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Empleado</title>
+</head>
+<body>
+    <h2>Actualizar Empleado</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+            {{ form.nombre.errors }}
+        </div>
+        <div>
+            {{ form.correo.label_tag }}
+            {{ form.correo }}
+            {{ form.correo.errors }}
+        </div>
+        <div>
+            {{ form.sueldo.label_tag }}
+            {{ form.sueldo }}
+            {{ form.sueldo.errors }}
+        </div>
+        <div>
+            {{ form.cargo.label_tag }}
+            {{ form.cargo }}
+            {{ form.cargo.errors }}
+        </div>
+        <div>
+            {{ form.activo.label_tag }}
+            {{ form.activo }}
+            {{ form.activo.errors }}
+        </div>
+        <input type="submit" value="Actualizar">
+    </form>
+</body>
+</html>

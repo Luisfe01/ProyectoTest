@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Prices List</title>
+</head>
+<body>
+    <h1>Crypto Prices List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for crypto in precios  %}
+                <tr>
+                    <td>{{ crypto.symbol }}</td>
+                    <td>{{ crypto.price }}</td>
+                </tr>
+            {% endfor %}
+                
+        </tbody>
+    </table>
+</body>
+</html>

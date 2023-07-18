@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina inicial</title>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+        <h1>Bienvenido!! Ha iniciado sesion el usuario {{ request.user.username }}</h1>
+        <a href="{% url 'login_app:logout' %}">Cerrar Sesion</a>
+    {% else %}
+        <h1>Acceso denegado. Debe iniciar sesion o registrarse</h1>
+        <a href="{% url 'login_app:login' %}">Iniciar Sesion</a><br>
+        <a href="{% url 'login_app:nuevo-usuario' %}">Registrarse</a>
+    {% endif %} 
+</body>
+</html>
